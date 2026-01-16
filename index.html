@@ -1,0 +1,2590 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Completa AI-102 - Azure AI Engineer Associate</title>
+    <style>
+        /* Estilos profesionales para la guía */
+        @page {
+            margin: 2.5cm;
+            size: A4;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            position: relative;
+        }
+        
+        /* Portada */
+        .cover {
+            text-align: center;
+            padding: 50px 0;
+            border-bottom: 3px solid #0078d4;
+            margin-bottom: 40px;
+            page-break-after: always;
+        }
+        
+        .cover h1 {
+            font-size: 2.5em;
+            color: #0078d4;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .cover h2 {
+            font-size: 1.8em;
+            color: #106ebe;
+            margin-bottom: 20px;
+        }
+        
+        .cover .subtitle {
+            font-size: 1.2em;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+        
+        .cover .edition {
+            font-size: 1.1em;
+            color: #0078d4;
+            font-weight: bold;
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+        
+        /* Tabla de contenidos */
+        .toc {
+            page-break-before: always;
+            margin-bottom: 40px;
+        }
+        
+        .toc h2 {
+            color: #0078d4;
+            border-bottom: 2px solid #0078d4;
+            padding-bottom: 10px;
+        }
+        
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .toc li {
+            margin: 8px 0;
+            padding: 5px 0;
+        }
+        
+        .toc .level1 {
+            font-weight: bold;
+            color: #0078d4;
+            font-size: 1.1em;
+        }
+        
+        .toc .level2 {
+            padding-left: 20px;
+            color: #333;
+        }
+        
+        /* Encabezados */
+        h1 {
+            color: #0078d4;
+            font-size: 2.2em;
+            border-bottom: 3px solid #0078d4;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            page-break-before: always;
+        }
+        
+        h2 {
+            color: #106ebe;
+            font-size: 1.8em;
+            margin-top: 30px;
+            border-left: 5px solid #0078d4;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            color: #1e6bb8;
+            font-size: 1.4em;
+            margin-top: 25px;
+        }
+        
+        h4 {
+            color: #2c5aa0;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        
+        /* Cajas especiales */
+        .note-box {
+            background: #e8f4fd;
+            border-left: 5px solid #0078d4;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .warning-box {
+            background: #f8d7da;
+            border-left: 5px solid #dc3545;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        /* Listas */
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+        
+        /* Tablas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+        
+        th {
+            background: #0078d4;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        /* Código */
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #e83e8c;
+        }
+        
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border-left: 4px solid #0078d4;
+        }
+        
+        /* Checklist */
+        .checklist {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .checklist h4 {
+            color: #0078d4;
+            margin-top: 0;
+        }
+        
+        .checklist ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .checklist li {
+            margin: 8px 0;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .checklist input[type="checkbox"] {
+            margin-right: 10px;
+            margin-top: 3px;
+            transform: scale(1.2);
+            accent-color: #0078d4;
+        }
+        
+        .checklist label {
+            cursor: pointer;
+            flex: 1;
+        }
+        
+        .checklist li.completed label {
+            text-decoration: line-through;
+            color: #28a745;
+        }
+        
+        /* Simulacros */
+        .question {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .question-number {
+            background: #0078d4;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .options {
+            margin: 15px 0;
+        }
+        
+        .options li {
+            margin: 8px 0;
+            padding: 10px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            list-style: none;
+        }
+        
+        .options li:hover {
+            border-color: #0078d4;
+            background-color: #f8f9ff;
+        }
+        
+        .options li.selected {
+            border-color: #0078d4;
+            background-color: #e8f4fd;
+        }
+        
+        .options li.correct {
+            border-color: #28a745;
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .options li.incorrect {
+            border-color: #dc3545;
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .options li.disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        
+        .question-feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .question-feedback.correct {
+            background-color: #d4edda;
+            border: 1px solid #28a745;
+            color: #155724;
+        }
+        
+        .question-feedback.incorrect {
+            background-color: #f8d7da;
+            border: 1px solid #dc3545;
+            color: #721c24;
+        }
+        
+        .quiz-progress {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #0078d4, #106ebe);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        /* Respuestas */
+        .answer-correct {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 10px 15px;
+            margin: 10px 0;
+        }
+        
+        .answer-explanation {
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        
+        /* Utilidades */
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .font-bold { font-weight: bold; }
+        .text-blue { color: #0078d4; }
+        .text-green { color: #28a745; }
+        .text-red { color: #dc3545; }
+        .text-orange { color: #ffc107; }
+        
+        .page-break { page-break-before: always; }
+        .no-break { page-break-inside: avoid; }
+        
+        /* Navegación interna */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .toc a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            padding: 2px 0;
+            transition: color 0.3s ease;
+        }
+        
+        .toc a:hover {
+            color: #0078d4;
+            text-decoration: underline;
+        }
+        
+        .toc .level1 a {
+            font-weight: bold;
+            color: #0078d4;
+            font-size: 1.1em;
+        }
+        
+        .toc .level2 a {
+            padding-left: 20px;
+            color: #333;
+        }
+        
+        /* Botón volver arriba */
+        .back-to-top {
+            display: inline-block;
+            background: #0078d4;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9em;
+            margin: 20px 0;
+            transition: background-color 0.3s ease;
+        }
+        
+        .back-to-top:hover {
+            background: #106ebe;
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* Botón flotante para volver arriba */
+        .floating-back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #0078d4;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2em;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+        
+        .floating-back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .floating-back-to-top:hover {
+            background: #106ebe;
+            color: white;
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+        
+        /* Elementos Rhino */
+        .rhino-element {
+            color: #0078d4;
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        
+        .rhino-section {
+            position: relative;
+        }
+        
+        .rhino-section::before {
+            content: "🦏";
+            position: absolute;
+            left: -30px;
+            top: 5px;
+            font-size: 1.2em;
+            opacity: 0.7;
+        }
+        
+        .rhino-tip {
+            background: linear-gradient(135deg, #f0f8ff, #e8f4fd);
+            border-left: 5px solid #0078d4;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            position: relative;
+        }
+        
+        .rhino-tip::before {
+            content: "🦏 Rhino Tip";
+            font-weight: bold;
+            color: #0078d4;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        /* Logo pequeño en esquina */
+        .corner-logo {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-image: url('https://i.imgur.com/0QVAvxL.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.7;
+            z-index: 1000;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: opacity 0.3s ease;
+        }
+        
+        .corner-logo:hover {
+            opacity: 1;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo Rhinos en esquina -->
+    <div class="corner-logo" title="Rhinos - Fuerza y Determinación"></div>
+    
+    <!-- PORTADA -->
+    <div class="cover">
+        <h1>🦏 GUÍA PARA CERTIFICACIÓN AI-102</h2>
+        <h2>AZURE AI ENGINEER ASSOCIATE</h2>
+        
+        <div style="margin-top: 50px; font-size: 1.1em; color: #666;">
+            <p><strong>Índice:</strong></p>
+            <p>- 5 Dominios completos con enfoque dual (novatos + expertos)</p>
+            <p>- 3 Simulacros progresivos con 150 preguntas</p>
+            <p>- 100+ Tips específicos del examen AI-102</p>
+            <p>- Proyectos hands-on para cada dominio</p>
+            <p>- Estrategias de estudio probadas</p>
+            <p style="margin-top: 30px; font-style: italic; color: #0078d4;">
+                <span class="rhino-element">🦏</span> "Fuerza, determinación y precisión en cada respuesta"
+            </p>
+        </div>
+    </div>
+
+    <!-- TABLA DE CONTENIDOS -->
+    <div class="toc">
+        <h2>📋 TABLA DE CONTENIDOS</h2>
+        
+        <ul>
+            <li class="level1"><a href="#introduccion-metodologia">INTRODUCCIÓN Y METODOLOGÍA</a></li>
+            <li class="level2"><a href="#como-usar-guia">• Cómo usar esta guía</a></li>
+            <li class="level2"><a href="#estructura-examen">• Estructura del examen AI-102</a></li>
+            <li class="level2"><a href="#estrategias-estudio">• Estrategias de estudio</a></li>
+            <li class="level2"><a href="#formula-respuestas">• Fórmula uniforme para respuestas</a></li>
+            
+            <li class="level1">DOMINIOS DEL EXAMEN</li>
+            <li class="level2"><a href="#dominio-1">1. DOMINIO 1: PLANIFICAR Y GESTIONAR SOLUCIONES DE AZURE AI (15-20%)</a></li>
+            <li class="level2"><a href="#dominio-2">2. DOMINIO 2: IMPLEMENTAR SOLUCIONES DE VISIÓN ARTIFICIAL (20-25%)</a></li>
+            <li class="level2"><a href="#dominio-3">3. DOMINIO 3: IMPLEMENTAR SOLUCIONES DE PROCESAMIENTO DE LENGUAJE NATURAL (30-35%)</a></li>
+            <li class="level2"><a href="#dominio-4">4. DOMINIO 4: IMPLEMENTAR SOLUCIONES DE MINERÍA DE CONOCIMIENTO (10-15%)</a></li>
+            <li class="level2"><a href="#dominio-5">5. DOMINIO 5: IMPLEMENTAR SOLUCIONES DE IA CONVERSACIONAL (15-20%)</a></li>
+            
+            <li class="level1"><a href="#simulacros-examen">SIMULACROS DE EXAMEN</a></li>
+            <li class="level2"><a href="#simulacro-1">• Simulacro 1: Fundamentos</a></li>
+            <li class="level2">• Simulacro 2: Arquitectura Avanzada (próximamente)</li>
+            <li class="level2">• Simulacro 3: Casos Edge y Troubleshooting (próximamente)</li>
+            <li class="level2"><a href="#explicaciones-detalladas">• Explicaciones Detalladas</a></li>
+            
+            <li class="level1"><a href="#recursos-finales">RECURSOS FINALES</a></li>
+            <li class="level2"><a href="#checklist-preparacion">• Checklist de preparación</a></li>
+            <li class="level2"><a href="#estrategia-final">• Estrategia final de estudio</a></li>
+            <li class="level2"><a href="#tips-dia-examen">• Tips para el día del examen</a></li>
+        </ul>
+    </div>
+
+    <!-- INTRODUCCIÓN -->
+    <h1 id="introduccion-metodologia">INTRODUCCIÓN Y METODOLOGÍA</h1>
+
+    <h2 id="como-usar-guia">Cómo usar esta guía</h2>
+    
+    <p>Esta guía está diseñada de dos entornos diferentes:</p>
+
+    <div class="note-box">
+        <h4>🌱 Para Novatos en Azure e IT:</h4>
+        <ul>
+            <li><strong>Contenido principal:</strong> Entendible desde cero</li>
+            <li><strong>Secciones "Nota para Novatos":</strong> Conceptos básicos y analogías simples</li>
+            <li><strong>Ejercicios paso a paso:</strong> Con explicaciones detalladas</li>
+            <li><strong>Glosario integrado:</strong> Términos técnicos explicados</li>
+        </ul>
+    </div>
+
+    <div class="tip-box">
+        <h4>🚀 Para Expertos Técnicos:</h4>
+        <ul>
+            <li><strong>Secciones "Pro Tip/Nivel Avanzado":</strong> Arquitecturas de referencia y best practices</li>
+            <li><strong>Casos de mundo real:</strong> Escenarios de producción complejos</li>
+            <li><strong>Troubleshooting avanzado:</strong> Solución de problemas específicos</li>
+            <li><strong>Integration patterns:</strong> Patrones arquitectónicos empresariales</li>
+        </ul>
+    </div>
+
+    <h2 id="estructura-examen">Estructura del examen AI-102</h2>
+
+    <div class="note-box">
+        <h4>📊 Formato del examen:</h4>
+        <ul>
+            <li><strong>Duración:</strong> 120 minutos</li>
+            <li><strong>Preguntas:</strong> 40-60 preguntas</li>
+            <li><strong>Tipos:</strong> Opción múltiple, arrastrar y soltar, casos de estudio</li>
+            <li><strong>Puntuación:</strong> 700/1000 para aprobar</li>
+            <li><strong>Idiomas:</strong> Inglés, Japonés, Chino, Coreano, Español, Alemán, Francés</li>
+        </ul>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Dominio</th>
+                <th>Peso</th>
+                <th>Enfoque Principal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Dominio 1: Planificación y gestión</td>
+                <td>15-20%</td>
+                <td>Arquitectura y costos</td>
+            </tr>
+            <tr>
+                <td>Dominio 2: Visión artificial</td>
+                <td>20-25%</td>
+                <td>Computer Vision y Custom Vision</td>
+            </tr>
+            <tr>
+                <td><strong>Dominio 3: Procesamiento de lenguaje natural</strong></td>
+                <td><strong>30-35%</strong></td>
+                <td><strong>El más importante</strong></td>
+            </tr>
+            <tr>
+                <td>Dominio 4: Minería de conocimiento</td>
+                <td>10-15%</td>
+                <td>Cognitive Search</td>
+            </tr>
+            <tr>
+                <td>Dominio 5: IA conversacional</td>
+                <td>15-20%</td>
+                <td>Bot Framework</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 id="estrategias-estudio">Estrategias de estudio</h2>
+
+    <div class="rhino-tip">
+        <h4>📅 Plan de Estudio Rhino (5 semanas):</h4>
+        
+        <p><strong>🦏 Semana 1-2: Dominios Críticos (65% del examen)</strong></p>
+        <ul>
+            <li>Dominio 1: Planificación y gestión</li>
+            <li>Dominio 3: Procesamiento de lenguaje natural</li>
+        </ul>
+        
+        <p><strong>🦏 Semana 3: Dominios Técnicos (40% del examen)</strong></p>
+        <ul>
+            <li>Dominio 2: Visión artificial</li>
+            <li>Dominio 5: IA conversacional</li>
+        </ul>
+        
+        <p><strong>🦏 Semana 4: Dominio Especializado (15% del examen)</strong></p>
+        <ul>
+            <li>Dominio 4: Minería de conocimiento</li>
+            <li>Repaso general de todos los dominios</li>
+        </ul>
+        
+        <p><strong>🦏 Semana 5: Práctica Intensiva</strong></p>
+        <ul>
+            <li>3 simulacros completos</li>
+            <li>Revisión de áreas débiles</li>
+            <li>Memorización de Rhino Tips específicos</li>
+        </ul>
+
+    </div>
+
+    <h2 id="formula-respuestas">Fórmula uniforme para respuestas</h2>
+
+    <div class="rhino-tip">
+        <h4>🎯 Fórmula Rhino para CUALQUIER pregunta del AI-102:</h4>
+        <ol>
+            <li><strong>📖 Identifica el escenario:</strong> ¿Qué tipo de aplicación/industria/requerimiento?</li>
+            <li><strong>⚖️ Analiza requerimientos:</strong> Volumen, latencia, precisión, compliance, presupuesto</li>
+            <li><strong>🔄 Compara opciones:</strong> Menciona al menos 2-3 alternativas viables</li>
+            <li><strong>✅ Justifica selección:</strong> Explica por qué tu opción es la óptima</li>
+            <li><strong>🔒 Considera seguridad:</strong> Authentication, network security, Responsible AI</li>
+            <li><strong>📊 Valida implementación:</strong> Monitoring, testing, optimization</li>
+        </ol>
+    </div>
+
+    <div class="tip-box">
+        <h4>Especialización por dominio:</h4>
+        <ul>
+            <li><strong>NLP:</strong> Enfócate en tipo de texto y capacidades lingüísticas</li>
+            <li><strong>Vision:</strong> Considera formato de imagen y precisión requerida</li>
+            <li><strong>Bots:</strong> Analiza channels y complejidad conversacional</li>
+            <li><strong>Search:</strong> Evalúa tipos de contenido y patrones de búsqueda</li>
+        </ul>
+    </div>
+    <!-- DOMINIO 1 -->
+    <h1 id="dominio-1" class="rhino-section">🦏 DOMINIO 1: PLANIFICAR Y GESTIONAR SOLUCIONES DE AZURE AI</h1>
+    <div class="note-box">
+        <p><strong>Peso del examen:</strong> 15-20% | <strong>Objetivo:</strong> Dominar la planificación, selección y gestión de servicios de Azure AI para implementar soluciones empresariales efectivas.</p>
+    </div>
+
+    <h2>MÓDULO 1.1: SELECCIÓN DE SERVICIOS DE AZURE AI</h2>
+
+    <h3>Los Tres Pilares de Azure AI:</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Servicio</th>
+                <th>Descripción</th>
+                <th>Casos de Uso</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Azure AI Services</strong></td>
+                <td>APIs preentrenadas listas para usar</td>
+                <td>OCR, traducción, análisis de sentimientos</td>
+            </tr>
+            <tr>
+                <td><strong>Azure OpenAI Service</strong></td>
+                <td>Modelos de lenguaje grandes (LLMs)</td>
+                <td>Generación de contenido, conversaciones complejas</td>
+            </tr>
+            <tr>
+                <td><strong>Azure Machine Learning</strong></td>
+                <td>Plataforma completa de ML</td>
+                <td>Modelos personalizados, MLOps</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note-box">
+        <h4>🔍 Nota para Novatos: ¿Qué es una API de IA?</h4>
+        <p>Imagina que quieres que tu aplicación pueda "ver" imágenes. En lugar de programar desde cero cómo reconocer objetos (lo cual tomaría años), usas una API de Computer Vision que ya sabe hacerlo.</p>
+        
+        <p><strong>Analogía simple:</strong> Es como usar Google Translate en tu app en lugar de crear tu propio traductor.</p>
+        
+        <p><strong>Conceptos básicos que debes dominar:</strong></p>
+        <ul>
+            <li><strong>Endpoint:</strong> La dirección web donde está tu servicio de IA</li>
+            <li><strong>API Key:</strong> Tu "contraseña" para usar el servicio</li>
+            <li><strong>Request/Response:</strong> Envías datos (imagen, texto) y recibes resultados (análisis, traducción)</li>
+        </ul>
+    </div>
+
+    <h3>Decisiones Arquitectónicas Críticas</h3>
+
+    <div class="success-box">
+        <h4>¿Cuándo usar Azure AI Services?</h4>
+        <p><strong>✅ USA cuando:</strong></p>
+        <ul>
+            <li>Necesitas funcionalidad estándar (OCR, traducción, análisis de sentimientos)</li>
+            <li>Quieres implementación rápida</li>
+            <li>No tienes datos específicos para entrenar</li>
+            <li>El presupuesto es limitado</li>
+        </ul>
+        
+        <p><strong>❌ NO uses cuando:</strong></p>
+        <ul>
+            <li>Necesitas comportamiento muy específico de tu industria</li>
+            <li>Tienes grandes volúmenes de datos propios</li>
+            <li>Requieres control total del modelo</li>
+        </ul>
+    </div>
+
+    <div class="tip-box">
+        <h4>¿Cuándo usar Azure OpenAI?</h4>
+        <p><strong>✅ USA cuando:</strong></p>
+        <ul>
+            <li>Necesitas generación de contenido</li>
+            <li>Conversaciones complejas</li>
+            <li>Análisis de texto avanzado</li>
+            <li>Creatividad y razonamiento</li>
+        </ul>
+        
+        <p><strong>❌ NO uses cuando:</strong></p>
+        <ul>
+            <li>Necesitas respuestas determinísticas</li>
+            <li>Datos altamente sensibles sin control</li>
+            <li>Presupuesto muy limitado</li>
+        </ul>
+    </div>
+
+    <h2>MÓDULO 1.2: PLANIFICACIÓN DE RECURSOS Y COSTOS</h2>
+
+    <h3>Estructura de Pricing por Servicio:</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Servicio</th>
+                <th>Free Tier</th>
+                <th>Standard Tier</th>
+                <th>Commitment Tiers</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Azure AI Services</strong></td>
+                <td>Limitado pero útil para desarrollo</td>
+                <td>Pay-per-use, ideal para producción variable</td>
+                <td>Descuentos por volumen garantizado</td>
+            </tr>
+            <tr>
+                <td><strong>Azure OpenAI</strong></td>
+                <td>Solo créditos iniciales</td>
+                <td>Pricing por tokens (Input + Output)</td>
+                <td>No disponible</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note-box">
+        <h4>🔍 Nota para Novatos: ¿Cómo leer una factura de Azure?</h4>
+        <p><strong>Conceptos básicos:</strong></p>
+        <ul>
+            <li><strong>Resource Group:</strong> Agrupa recursos relacionados para facturación</li>
+            <li><strong>Subscription:</strong> Tu "cuenta" donde se cobran los servicios</li>
+            <li><strong>Cost Center:</strong> Para empresas, permite asignar costos a departamentos</li>
+        </ul>
+        
+        <p><strong>Alertas de presupuesto básicas:</strong></p>
+        <ol>
+            <li>Ve a Cost Management + Billing</li>
+            <li>Crea Budget con límite mensual</li>
+            <li>Configura alertas al 50%, 80%, 100%</li>
+            <li>Asigna responsables para notificaciones</li>
+        </ol>
+    </div>
+
+    <h2>MÓDULO 1.3: CREACIÓN Y CONFIGURACIÓN DE RECURSOS</h2>
+
+    <h3>Azure Portal vs CLI vs ARM Templates</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Método</th>
+                <th>Ideal para</th>
+                <th>Limitado para</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Azure Portal</strong></td>
+                <td>Aprendizaje, prototipos, configuración única</td>
+                <td>Automatización, reproducibilidad, CI/CD</td>
+            </tr>
+            <tr>
+                <td><strong>Azure CLI</strong></td>
+                <td>Scripts, automatización, desarrollo local</td>
+                <td>Configuraciones complejas, versionado</td>
+            </tr>
+            <tr>
+                <td><strong>ARM Templates</strong></td>
+                <td>Infraestructura como código, ambientes múltiples</td>
+                <td>Cambios rápidos, aprendizaje inicial</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="tip-box">
+        <h4>Naming Conventions Recomendadas:</h4>
+        <pre><code>{service}-{app}-{env}-{region}
+
+Ejemplos:
+cog-chatbot-prod-eastus     (Cognitive Services)
+cv-quality-dev-westus       (Custom Vision)
+oai-assistant-staging-eastus (OpenAI)</code></pre>
+    </div>
+
+    <h2>MÓDULO 1.4: SEGURIDAD, IDENTIDAD Y RESPONSIBLE AI</h2>
+
+    <h3>Métodos de Autenticación</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Método</th>
+                <th>Ventajas</th>
+                <th>Desventajas</th>
+                <th>Uso Recomendado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>API Keys</strong></td>
+                <td>Fácil de implementar</td>
+                <td>Difícil de rotar, compartir</td>
+                <td>Desarrollo, prototipos</td>
+            </tr>
+            <tr>
+                <td><strong>Azure AD</strong></td>
+                <td>Integración empresarial, MFA</td>
+                <td>Más complejo de configurar</td>
+                <td>Producción, aplicaciones empresariales</td>
+            </tr>
+            <tr>
+                <td><strong>Managed Identity</strong></td>
+                <td>Sin credenciales en código, rotación automática</td>
+                <td>Solo para recursos Azure</td>
+                <td>Aplicaciones en Azure</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note-box">
+        <h4>🔍 Nota para Novatos: ¿Qué es la identidad en la nube?</h4>
+        <p><strong>Analogía simple:</strong> Imagina tu oficina. Puedes entrar con:</p>
+        <ol>
+            <li><strong>Llave física (API Key):</strong> Funciona, pero si la pierdes, cualquiera puede entrar</li>
+            <li><strong>Tarjeta de empleado (Azure AD):</strong> Más segura, se puede desactivar remotamente</li>
+            <li><strong>Reconocimiento facial (Managed Identity):</strong> La más segura, no puedes "perderla"</li>
+        </ol>
+    </div>
+
+    <h3>Responsible AI Principles</h3>
+
+    <div class="warning-box">
+        <h4>Los 6 Principios de Microsoft:</h4>
+        <ol>
+            <li><strong>Fairness:</strong> IA debe tratar a todos equitativamente</li>
+            <li><strong>Reliability & Safety:</strong> IA debe ser confiable y segura</li>
+            <li><strong>Privacy & Security:</strong> Proteger datos y privacidad</li>
+            <li><strong>Inclusiveness:</strong> IA debe empoderar a todos</li>
+            <li><strong>Transparency:</strong> IA debe ser comprensible</li>
+            <li><strong>Accountability:</strong> Humanos deben ser responsables</li>
+        </ol>
+    </div>
+
+    <div class="note-box">
+        <h4>🔍 Nota para Novatos: ¿Por qué es importante la IA responsable?</h4>
+        <p><strong>Ejemplo real:</strong> Un sistema de IA para revisar CVs discriminaba contra mujeres porque fue entrenado con datos históricos sesgados.</p>
+        
+        <p><strong>Impacto:</strong></p>
+        <ul>
+            <li><strong>Legal:</strong> Demandas por discriminación</li>
+            <li><strong>Reputacional:</strong> Pérdida de confianza del público</li>
+            <li><strong>Ético:</strong> Perpetuación de injusticias sociales</li>
+        </ul>
+        
+        <p><strong>Tu responsabilidad como AI Engineer:</strong></p>
+        <ul>
+            <li>Entender los datos de entrenamiento</li>
+            <li>Probar con grupos diversos</li>
+            <li>Implementar human oversight</li>
+            <li>Documentar decisiones y limitaciones</li>
+        </ul>
+    </div>
+
+    <div class="checklist">
+        <h4>✅ CHECKLIST DE DOMINIO 1</h4>
+        
+        <p><strong>📝 Conocimientos de Examen (Obligatorios para AI-102):</strong></p>
+        <ul>
+            <li><input type="checkbox" id="d1-1"><label for="d1-1">Puedo explicar cuándo usar cada servicio de Azure AI y justificar la decisión</label></li>
+            <li><input type="checkbox" id="d1-2"><label for="d1-2">Conozco los modelos de pricing y puedo calcular costos básicos</label></li>
+            <li><input type="checkbox" id="d1-3"><label for="d1-3">Domino los métodos de deployment: Portal, CLI, ARM Templates</label></li>
+            <li><input type="checkbox" id="d1-4"><label for="d1-4">Entiendo la diferencia entre API Keys, Azure AD y Managed Identity</label></li>
+            <li><input type="checkbox" id="d1-5"><label for="d1-5">Puedo configurar network security y private endpoints</label></li>
+            <li><input type="checkbox" id="d1-6"><label for="d1-6">Conozco los 6 principios de Responsible AI de Microsoft</label></li>
+            <li><input type="checkbox" id="d1-7"><label for="d1-7">Sé implementar content filtering en Azure OpenAI</label></li>
+        </ul>
+        
+        <p><strong>🌍 Habilidades del Mundo Real (Valor Agregado):</strong></p>
+        <ul>
+            <li><input type="checkbox" id="d1-8"><label for="d1-8">Puedo diseñar arquitecturas híbridas combinando múltiples servicios</label></li>
+            <li><input type="checkbox" id="d1-9"><label for="d1-9">Implemento estrategias de cost optimization en producción</label></li>
+            <li><input type="checkbox" id="d1-10"><label for="d1-10">Configuro monitoring y alerting avanzado</label></li>
+            <li><input type="checkbox" id="d1-11"><label for="d1-11">Aplico zero-trust architecture para AI services</label></li>
+        </ul>
+    </div>
+
+    <h1 id="dominio-2">DOMINIO 2: IMPLEMENTAR SOLUCIONES DE VISIÓN ARTIFICIAL</h1>
+    <div class="note-box">
+        <p><strong>Peso del examen:</strong> 20-25% | <strong>Objetivo:</strong> Implementar soluciones completas de Computer Vision, desde APIs preentrenadas hasta modelos custom.</p>
+    </div>
+
+    <h2>MÓDULO 2.1: COMPUTER VISION API</h2>
+
+    <h3>Features Principales y Sus Casos de Uso:</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>Descripción</th>
+                <th>Casos de Uso</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Image Analysis</strong></td>
+                <td>Detecta objetos, escenas, celebrities, brands</td>
+                <td>Catalogación automática, moderación de contenido</td>
+            </tr>
+            <tr>
+                <td><strong>OCR / Read API</strong></td>
+                <td>Extrae texto de imágenes y documentos</td>
+                <td>Digitalización de documentos, análisis de facturas</td>
+            </tr>
+            <tr>
+                <td><strong>Spatial Analysis</strong></td>
+                <td>Análisis de video en tiempo real</td>
+                <td>Conteo de personas, distanciamiento social</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note-box">
+        <h4>🔍 Nota para Novatos: ¿Qué puede "ver" una computadora?</h4>
+        <p><strong>Analogía simple:</strong> Imagina que describes una foto a alguien por teléfono. Computer Vision hace exactamente eso, pero de forma automática y estructurada.</p>
+        
+        <p><strong>Conceptos básicos que debes dominar:</strong></p>
+        <ul>
+            <li><strong>Bounding box:</strong> Rectángulo que rodea un objeto detectado</li>
+            <li><strong>Confidence score:</strong> Qué tan "segura" está la IA (0.0 a 1.0)</li>
+            <li><strong>Tags vs Categories:</strong> Tags son específicos ("perro"), categories son generales ("animal")</li>
+        </ul>
+    </div>
+
+    <div class="warning-box">
+        <h4>📝 EXAMEN: ¿Cuándo usar Computer Vision vs Custom Vision?</h4>
+        
+        <p><strong>Usa Computer Vision cuando:</strong></p>
+        <ul>
+            <li>✅ Necesitas análisis general de imágenes</li>
+            <li>✅ Detección de objetos comunes (personas, vehículos, animales)</li>
+            <li>✅ OCR de documentos estándar</li>
+            <li>✅ Implementación rápida sin training</li>
+        </ul>
+        
+        <p><strong>Usa Custom Vision cuando:</strong></p>
+        <ul>
+            <li>✅ Objetos específicos de tu industria</li>
+            <li>✅ Necesitas mayor precisión en tu dominio</li>
+            <li>✅ Tienes dataset etiquetado disponible</li>
+            <li>✅ Requerimientos de compliance específicos</li>
+        </ul>
+    </div>
+
+    <h2>MÓDULO 2.2: CUSTOM VISION</h2>
+
+    <h3>Classification vs Object Detection - Decisión Crítica</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Aspecto</th>
+                <th>Image Classification</th>
+                <th>Object Detection</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Qué hace</strong></td>
+                <td>"¿Qué es esta imagen?" (una respuesta)</td>
+                <td>"¿Qué objetos hay y dónde?" (múltiples objetos con ubicación)</td>
+            </tr>
+            <tr>
+                <td><strong>Ejemplo</strong></td>
+                <td>"Esta imagen es un gato"</td>
+                <td>"Hay 2 gatos en coordenadas (x1,y1) y (x2,y2)"</td>
+            </tr>
+            <tr>
+                <td><strong>Casos de uso</strong></td>
+                <td>Control de calidad, categorización</td>
+                <td>Conteo de inventario, detección de equipos</td>
+            </tr>
+            <tr>
+                <td><strong>Performance</strong></td>
+                <td>Más rápido, menos datos, menor costo</td>
+                <td>Más lento, más datos, mayor costo, más información</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note-box">
+        <h4>🔍 Nota para Novatos: ¿Cuál elegir?</h4>
+        <p><strong>Pregunta simple:</strong> ¿Necesitas saber DÓNDE está el objeto en la imagen?</p>
+        <ul>
+            <li><strong>NO:</strong> Usa Classification</li>
+            <li><strong>SÍ:</strong> Usa Object Detection</li>
+        </ul>
+    </div>
+
+    <h3>Training Dataset - Best Practices</h3>
+
+    <div class="tip-box">
+        <h4>📝 EXAMEN: Requerimientos Mínimos</h4>
+        
+        <p><strong>Para Classification:</strong></p>
+        <ul>
+            <li><strong>Mínimo:</strong> 30 imágenes por clase</li>
+            <li><strong>Recomendado:</strong> 50+ imágenes por clase</li>
+            <li><strong>Óptimo:</strong> 100+ imágenes por clase</li>
+        </ul>
+        
+        <p><strong>Para Object Detection:</strong></p>
+        <ul>
+            <li><strong>Mínimo:</strong> 15 imágenes con objetos etiquetados</li>
+            <li><strong>Recomendado:</strong> 30+ imágenes por clase de objeto</li>
+            <li><strong>Óptimo:</strong> 50+ imágenes por clase de objeto</li>
+        </ul>
+    </div>
+
+    <h2>MÓDULO 2.3: FACE API</h2>
+
+    <div class="warning-box">
+        <h4>⚠️ Advertencias Críticas del Examen:</h4>
+        
+        <p><strong>Limitaciones Geográficas:</strong></p>
+        <ul>
+            <li><strong>Face identification y verification:</strong> Limitado a ciertas regiones</li>
+            <li><strong>Emotional recognition:</strong> Deprecated y será removido</li>
+            <li><strong>Age y gender detection:</strong> Limitado por regulaciones locales</li>
+        </ul>
+        
+        <p><strong>Responsible AI Considerations:</strong></p>
+        <ul>
+            <li><strong>Consentimiento explícito:</strong> Requerido para almacenar datos biométricos</li>
+            <li><strong>Retention policies:</strong> Límites de tiempo para almacenar face data</li>
+            <li><strong>Bias mitigation:</strong> Probar con grupos demográficos diversos</li>
+            <li><strong>Transparency:</strong> Informar a usuarios sobre uso de reconocimiento facial</li>
+        </ul>
+    </div>
+
+    <div class="note-box">
+        <h4>🔍 Nota para Novatos: Conceptos de Face API</h4>
+        
+        <p><strong>Face Detection vs Recognition vs Verification:</strong></p>
+        <ol>
+            <li><strong>Detection:</strong> "¿Hay caras en esta imagen?" - Encuentra ubicación de caras</li>
+            <li><strong>Recognition:</strong> "¿Quién es esta persona?" - Identifica persona específica</li>
+            <li><strong>Verification:</strong> "¿Es esta la misma persona?" - Compara dos caras</li>
+        </ol>
+        
+        <p><strong>Analogías:</strong></p>
+        <ul>
+            <li><strong>Detection:</strong> "Veo que hay 3 personas en la foto"</li>
+            <li><strong>Recognition:</strong> "Veo que Juan está en la foto"</li>
+            <li><strong>Verification:</strong> "Confirmo que estas dos fotos son de la misma persona"</li>
+        </ul>
+    </div>
+
+    <div class="checklist">
+        <h4>✅ CHECKLIST DE DOMINIO 2</h4>
+        
+        <p><strong>📝 Conocimientos de Examen (Obligatorios para AI-102):</strong></p>
+        
+        <p><strong>Computer Vision API:</strong></p>
+        <ul text aling= center>
+            <li><input type="checkbox" id="d1-1"><label for="d1-1">Conozco las diferencias entre Analyze, OCR y Read API</label></li>
+            <li><input type="checkbox" id="d1-2"><label for="d1-2">Puedo decidir cuándo usar Computer Vision vs Custom Vision</label></li>
+            <li><input type="checkbox" id="d1-3"><label for="d1-3">Entiendo los formatos soportados y limitaciones técnicas</label></li>
+            <li><input type="checkbox" id="d1-4"><label for="d1-4">Sé optimizar imágenes para mejor performance</label></li>
+        </ul>
+        
+        <p><strong>Custom Vision:</strong></p>
+        <ul>
+            <li><input type="checkbox" id="d1-5"><label for="d1-5">Distingo claramente Classification vs Object Detection</label></li>
+            <li><input type="checkbox" id="d1-6"><label for="d1-6">Conozco los requerimientos mínimos de dataset</label></li>
+            <li><input type="checkbox" id="d1-7"><label for="d1-7">Puedo implementar training y evaluation workflows</label></li>
+            <li><input type="checkbox" id="d1-8"><label for="d1-8">Sé exportar y deployar modelos custom</label></li>
+        </ul>
+        
+        <p><strong>Face API:</strong></p>
+        <ul>
+            <li><input type="checkbox" id="d1-9"><label for="d1-9">Conozco las limitaciones geográficas actuales</label></li>
+            <li><input type="checkbox" id="d1-10"><label for="d1-10">Entiendo las diferencias entre detection, recognition y verification</label></li>
+            <li><input type="checkbox" id="d1-11"><label for="d1-11">Puedo implementar sistemas con compliance adecuado</label></li>
+            <li><input type="checkbox" id="d1-12"><label for="d1-12">Conozco los principios de Responsible AI para biometría</label></li>
+        </ul>
+    </div>
+
+    <h1 id="dominio-3" class="rhino-section">🦏 DOMINIO 3: IMPLEMENTAR SOLUCIONES DE PROCESAMIENTO DE LENGUAJE NATURAL</h1>
+    <div class="warning-box">
+        <p><strong>Peso del examen:</strong> 30-35% - <strong>El Dominio Más Importante</strong> | <strong>Objetivo:</strong> Dominar Azure AI Language Service completo, incluyendo migraciones desde LUIS/QnA Maker y implementación de Azure OpenAI con Responsible AI.</p>
+    </div>
+
+    <h2>MÓDULO 3.1: AZURE AI LANGUAGE SERVICE (CONVERSATIONAL LANGUAGE UNDERSTANDING)</h2>
+
+    <div class="warning-box">
+        <h4>⚠️ CRÍTICO PARA EL EXAMEN:</h4>
+        <p>LUIS está siendo migrado a Azure AI Language Service. Debes conocer tanto el proceso de migración como las nuevas capacidades.</p>
+    </div>
+
+    <h3>La Nueva Era Post-LUIS</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Aspecto</th>
+                <th>LUIS (Legacy)</th>
+                <th>Language Service (Nuevo)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Arquitectura</strong></td>
+                <td>Servicio independiente</td>
+                <td>Servicio unificado</td>
+            </tr>
+            <tr>
+                <td><strong>Capacidades</strong></td>
+                <td>Solo NLU</td>
+                <td>NLU + Text Analytics + QnA + más</td>
+            </tr>
+            <tr>
+                <td><strong>API</strong></td>
+                <td>API específica de LUIS</td>
+                <td>API unificada</td>
+            </tr>
+            <tr>
+                <td><strong>Orchestration</strong></td>
+                <td>No disponible</td>
+                <td>Combina múltiples modelos</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note-box">
+        <h4>🔍 Nota para Novatos: ¿Cómo entiende el lenguaje una máquina?</h4>
+        <p><strong>Analogía simple:</strong> Imagina que eres un recepcionista nuevo. Cuando alguien dice "Quiero cancelar mi reserva del viernes", necesitas entender:</p>
+        <ul>
+            <li><strong>Intent (Intención):</strong> ¿Qué quiere hacer? → Cancelar</li>
+            <li><strong>Entity (Entidad):</strong> ¿Qué información específica da? → Reserva, Viernes</li>
+            <li><strong>Context (Contexto):</strong> ¿Hay información previa relevante? → Historial de reservas</li>
+        </ul>
+        
+        <p><strong>Conceptos fundamentales:</strong></p>
+        <ul>
+            <li><strong>Intent:</strong> La acción que el usuario quiere realizar</li>
+            <li><strong>Entity:</strong> Información específica dentro del texto</li>
+            <li><strong>Utterance:</strong> Ejemplo de cómo un usuario podría expresar algo</li>
+            <li><strong>Confidence Score:</strong> Qué tan seguro está el modelo (0.0 a 1.0)</li>
+        </ul>
+    </div>
+
+    <div class="tip-box">
+        <h4>📝 EXAMEN: Proceso de Migración Obligatorio</h4>
+        <p><strong>Pasos de migración que DEBES conocer:</strong></p>
+        <ol>
+            <li><strong>Assessment:</strong> Evaluar aplicación LUIS existente</li>
+            <li><strong>Export:</strong> Exportar modelo LUIS como JSON</li>
+            <li><strong>Import:</strong> Importar a Language Service</li>
+            <li><strong>Retrain:</strong> Entrenar en la nueva plataforma</li>
+            <li><strong>Test:</strong> Validar que performance se mantiene</li>
+            <li><strong>Switch:</strong> Cambiar endpoints en aplicaciones</li>
+            <li><strong>Monitor:</strong> Verificar que todo funciona correctamente</li>
+        </ol>
+    </div>
+
+    <h2>MÓDULO 3.2: AZURE AI LANGUAGE - TEXT ANALYTICS</h2>
+
+    <h3>Capacidades Principales:</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Capacidad</th>
+                <th>Descripción</th>
+                <th>Casos de Uso</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Sentiment Analysis + Opinion Mining</strong></td>
+                <td>Análisis de sentimientos con aspectos específicos</td>
+                <td>Análisis de reviews, feedback de productos</td>
+            </tr>
+            <tr>
+                <td><strong>Named Entity Recognition (NER)</strong></td>
+                <td>Extrae personas, lugares, organizaciones</td>
+                <td>Análisis de documentos, extracción de datos</td>
+            </tr>
+            <tr>
+                <td><strong>Key Phrase Extraction</strong></td>
+                <td>Identifica conceptos principales</td>
+                <td>Resúmenes automáticos, indexación</td>
+            </tr>
+            <tr>
+                <td><strong>Language Detection</strong></td>
+                <td>Detecta idioma del texto (120+ idiomas)</td>
+                <td>Routing automático, traducción</td>
+            </tr>
+            <tr>
+                <td><strong>PII Detection</strong></td>
+                <td>Detecta información personal sensible</td>
+                <td>Compliance, anonimización</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note-box">
+        <h4>🔍 Nota para Novatos: ¿Qué es Opinion Mining?</h4>
+        <p><strong>Diferencia con Sentiment Analysis básico:</strong></p>
+        
+        <p><strong>Sentiment básico:</strong> "Esta película es terrible pero la música es increíble" → Sentiment: MIXED</p>
+        
+        <p><strong>Opinion Mining:</strong></p>
+        <ul>
+            <li>Aspecto: "película" → Sentiment: NEGATIVO</li>
+            <li>Aspecto: "música" → Sentiment: POSITIVO</li>
+        </ul>
+        
+        <p><strong>Analogía:</strong> Es como tener un crítico experto que puede separar diferentes aspectos de una reseña en lugar de dar solo una opinión general.</p>
+    </div>
+
+    <h2>MÓDULO 3.3: AZURE AI LANGUAGE - QUESTION ANSWERING</h2>
+
+    <div class="warning-box">
+        <h4>⚠️ CRÍTICO PARA EL EXAMEN:</h4>
+        <p>QnA Maker está siendo migrado a Question Answering en Language Service. Debes conocer tanto la migración como las nuevas capacidades.</p>
+    </div>
+
+    <h3>QnA Maker → Question Answering: ¿Qué cambió?</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Aspecto</th>
+                <th>QnA Maker (Legacy)</th>
+                <th>Question Answering (Nuevo)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>NLU</strong></td>
+                <td>Básico</td>
+                <td>Comprensión más avanzada</td>
+            </tr>
+            <tr>
+                <td><strong>Prebuilt QnA</strong></td>
+                <td>No disponible</td>
+                <td>Respuestas automáticas sin training</td>
+            </tr>
+            <tr>
+                <td><strong>Custom QnA</strong></td>
+                <td>Funcionalidad básica</td>
+                <td>Mayor control sobre knowledge bases</td>
+            </tr>
+            <tr>
+                <td><strong>Multi-turn</strong></td>
+                <td>Limitado</td>
+                <td>Conversaciones más naturales</td>
+            </tr>
+            <tr>
+                <td><strong>Active Learning</strong></td>
+                <td>Manual</td>
+                <td>Mejora automática con uso</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note-box">
+        <h4>🔍 Nota para Novatos: ¿Cómo funciona Question Answering?</h4>
+        <p><strong>Analogía simple:</strong> Imagina una biblioteca muy inteligente donde:</p>
+        <ol>
+            <li><strong>Knowledge Base:</strong> Son todos los libros y documentos</li>
+            <li><strong>Question:</strong> Es lo que le preguntas al bibliotecario</li>
+            <li><strong>Answer:</strong> Es la respuesta que encuentra en los documentos</li>
+            <li><strong>Confidence:</strong> Qué tan seguro está de que es la respuesta correcta</li>
+        </ol>
+    </div>
+
+    <h2>MÓDULO 3.4: AZURE OPENAI SERVICE</h2>
+
+    <div class="warning-box">
+        <h4>Azure OpenAI Service es el servicio más avanzado y regulado de Azure AI. El examen evalúa fuertemente tu conocimiento de Responsible AI, prompt engineering y content filtering.</h4>
+    </div>
+
+    <h3>Modelos Disponibles y Sus Casos de Uso:</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Tipo de Modelo</th>
+                <th>Modelos</th>
+                <th>Casos de Uso</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>GPT Models</strong></td>
+                <td>GPT-3.5-turbo, GPT-4, GPT-4-turbo, GPT-4o</td>
+                <td>Conversaciones, Q&A, summarization, razonamiento</td>
+            </tr>
+            <tr>
+                <td><strong>DALL-E Models</strong></td>
+                <td>DALL-E 2, DALL-E 3</td>
+                <td>Generación de imágenes desde texto</td>
+            </tr>
+            <tr>
+                <td><strong>Embedding Models</strong></td>
+                <td>text-embedding-ada-002, text-embedding-3</td>
+                <td>Similarity search, clustering, RAG</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note-box">
+        <h4>🔍 Nota para Novatos: ¿Qué es Prompt Engineering?</h4>
+        <p><strong>Analogía simple:</strong> Es como dar instrucciones muy específicas a un asistente muy inteligente pero literal.</p>
+        
+        <p><strong>Mal prompt:</strong> "Escribe algo sobre marketing"</p>
+        
+        <p><strong>Buen prompt:</strong> "Actúa como experto en marketing digital. Escribe un plan de contenido de 30 días para una startup de tecnología B2B, incluyendo tipos de contenido, frecuencia y métricas de éxito. Formato: tabla con columnas Día, Tipo de Contenido, Tema, Canal, Métrica."</p>
+        
+        <p><strong>Conceptos básicos:</strong></p>
+        <ul>
+            <li><strong>System message:</strong> Define el rol y comportamiento del AI</li>
+            <li><strong>User message:</strong> La pregunta o solicitud específica</li>
+            <li><strong>Temperature:</strong> Qué tan creativo vs determinístico (0.0 a 1.0)</li>
+            <li><strong>Max tokens:</strong> Límite de longitud de respuesta</li>
+        </ul>
+    </div>
+
+    <div class="warning-box">
+        <h4>📝 EXAMEN: Content Filtering Obligatorio</h4>
+        <p><strong>Content filtering categories que DEBES conocer:</strong></p>
+        <ul>
+            <li><strong>Hate:</strong> Contenido de odio o discriminación</li>
+            <li><strong>Sexual:</strong> Contenido sexual explícito</li>
+            <li><strong>Violence:</strong> Contenido violento o dañino</li>
+            <li><strong>Self-harm:</strong> Contenido de autolesión</li>
+        </ul>
+        
+        <p><strong>Severity levels:</strong></p>
+        <ul>
+            <li><strong>Safe:</strong> Contenido apropiado</li>
+            <li><strong>Low:</strong> Riesgo mínimo</li>
+            <li><strong>Medium:</strong> Riesgo moderado</li>
+            <li><strong>High:</strong> Riesgo alto - debe ser bloqueado</li>
+        </ul>
+    </div>
+
+    <div class="checklist">
+        <h4>✅ CHECKLIST DE DOMINIO 3</h4>
+        
+        <p><strong>📝 Conocimientos de Examen (Obligatorios para AI-102):</strong></p>
+        
+        <p><strong>Conversational Language Understanding (CLU):</strong></p>
+        <ul>
+            <li><input type="checkbox" id="d1-1"><label for="d1-1">Conozco el proceso completo de migración LUIS → CLU</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-2">Entiendo orchestration workflows y cuándo usarlos</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-3">Puedo implementar intents, entities y utterances en CLU</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-4">Conozco las diferencias clave entre LUIS y CLU</label></li>
+        </ul>
+        
+        <p><strong>Text Analytics:</strong></p>
+        <ul>
+            <li><input type="checkbox" id="d1-1"><label for="d1-5">Distingo entre sentiment analysis básico y opinion mining</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-6">Puedo implementar NER prebuilt y custom</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-7">Entiendo PII detection y redaction</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-8">Sé usar batch processing para optimizar costos</label></li>
+        </ul>
+        
+        <p><strong>Question Answering:</strong></p>
+        <ul>
+            <li><input type="checkbox" id="d1-1"><label for="d1-9">Conozco el proceso de migración QnA Maker → Question Answering</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-10">Entiendo la diferencia entre prebuilt y custom QnA</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-11">Puedo implementar multi-turn conversations</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-12">Sé configurar active learning</label></li>
+        </ul>
+        
+        <p><strong>Azure OpenAI Service:</strong></p>
+        <ul>
+            <li><input type="checkbox" id="d1-1"><label for="d1-13">Entiendo todos los modelos disponibles y sus casos de uso</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-14">Puedo implementar content filtering completo</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-15">Conozco prompt engineering best practices</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-16">Sé manejar token optimization y costos</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-17">Entiendo Responsible AI implementation</label></li>
+        </ul>
+    </div>
+
+    <h1 id="dominio-4">DOMINIO 4: IMPLEMENTAR SOLUCIONES DE MINERÍA DE CONOCIMIENTO</h1>
+    <div class="note-box">
+        <p><strong>Peso del examen:</strong> 10-15% | <strong>Objetivo:</strong> Dominar Azure Cognitive Search para crear soluciones completas de búsqueda inteligente con AI enrichment y custom skills.</p>
+    </div>
+
+    <h2>MÓDULO 4.1: AZURE COGNITIVE SEARCH - FUNDAMENTOS</h2>
+
+    <h3>¿Qué es Knowledge Mining?</h3>
+    <p>Knowledge Mining es el proceso de extraer información valiosa de grandes volúmenes de contenido no estructurado usando IA. Azure Cognitive Search es la plataforma principal para implementar estas soluciones.</p>
+
+    <h3>Componentes Clave de Azure Cognitive Search:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Componente</th>
+                <th>Función</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Data Sources</strong></td>
+                <td>Origen de datos</td>
+                <td>Blob Storage, SQL Database, Cosmos DB, SharePoint</td>
+            </tr>
+            <tr>
+                <td><strong>Indexers</strong></td>
+                <td>Procesamiento</td>
+                <td>Extraen y procesan datos de las fuentes</td>
+            </tr>
+            <tr>
+                <td><strong>Skillsets</strong></td>
+                <td>IA aplicada</td>
+                <td>OCR, NER, sentiment analysis, custom skills</td>
+            </tr>
+            <tr>
+                <td><strong>Indexes</strong></td>
+                <td>Almacenamiento</td>
+                <td>Estructura optimizada para búsqueda</td>
+            </tr>
+            <tr>
+                <td><strong>Search Service</strong></td>
+                <td>API</td>
+                <td>Expone funcionalidad de búsqueda</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note-box">
+        <h4>🔍 Nota para Novatos: ¿Diferencia entre Search y Database?</h4>
+        
+        <p><strong>Database Query:</strong></p>
+        <pre><code>SELECT * FROM products WHERE category = 'electronics'</code></pre>
+        <ul>
+            <li>Búsqueda exacta</li>
+            <li>Estructura fija</li>
+            <li>Resultados determinísticos</li>
+        </ul>
+        
+        <p><strong>Search Query:</strong></p>
+        <pre><code>"smartphone with good camera under $500"</code></pre>
+        <ul>
+            <li>Búsqueda semántica</li>
+            <li>Contenido flexible</li>
+            <li>Resultados rankeados por relevancia</li>
+        </ul>
+        
+        <p><strong>Analogía simple:</strong> Una base de datos es como un archivero organizado. Un search engine es como un bibliotecario experto que entiende lo que realmente necesitas.</p>
+    </div>
+
+    <h3>Pipeline Típico:</h3>
+    <div class="tip-box">
+        <pre><code>Data Sources → Indexer → Skillset → Index → Search API → Application
+     ↓            ↓         ↓        ↓         ↓           ↓
+  Documents   Extraction  AI Magic  Storage  Queries   User Interface</code></pre>
+    </div>
+
+    <h2>MÓDULO 4.2: SKILLSETS Y AI ENRICHMENT</h2>
+
+    <h3>Categorías de Built-in Skills:</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Categoría</th>
+                <th>Skills</th>
+                <th>Casos de Uso</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Text Skills</strong></td>
+                <td>Key Phrase Extraction, Language Detection, Sentiment Analysis, Entity Recognition, Text Translation</td>
+                <td>Análisis de documentos, extracción de insights</td>
+            </tr>
+            <tr>
+                <td><strong>Image Skills</strong></td>
+                <td>OCR, Image Analysis, Face Detection</td>
+                <td>Procesamiento de documentos con imágenes</td>
+            </tr>
+            <tr>
+                <td><strong>Utility Skills</strong></td>
+                <td>Text Split, Text Merge, Conditional</td>
+                <td>Manipulación y transformación de datos</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note-box">
+        <h4>🔍 Nota para Novatos: ¿Qué es el "context" en skills?</h4>
+        <p>El <strong>context</strong> define el scope donde se aplica el skill:</p>
+        <ul>
+            <li><code>/document</code>: Una vez por documento</li>
+            <li><code>/document/pages/*</code>: Una vez por página</li>
+            <li><code>/document/normalized_images/*</code>: Una vez por imagen</li>
+        </ul>
+        
+        <p><strong>Analogía:</strong> Es como decir "aplica esta regla a cada párrafo" vs "aplica esta regla a todo el documento".</p>
+    </div>
+
+    <h2>MÓDULO 4.3: CUSTOM SKILLS DEVELOPMENT</h2>
+
+    <h3>Escenarios para Custom Skills:</h3>
+    <ul>
+        <li>Integración con APIs externas</li>
+        <li>Lógica de negocio específica</li>
+        <li>Modelos de ML personalizados</li>
+        <li>Transformaciones de datos complejas</li>
+    </ul>
+
+    <div class="tip-box">
+        <h4>Arquitectura de Custom Skill:</h4>
+        <pre><code>Cognitive Search → HTTP Request → Azure Function → External API → Response → Enriched Document</code></pre>
+    </div>
+
+    <div class="rhino-tip">
+        <h4>Custom skills siempre requieren:</h4>
+        <ol>
+            <li>HTTP endpoint que acepta POST</li>
+            <li>Formato específico de request/response</li>
+            <li>Timeout handling (máximo 230 segundos)</li>
+            <li>Error handling robusto</li>
+        </ol>
+    </div>
+
+    <h2>MÓDULO 4.4: SEARCH INDEXES Y QUERYING</h2>
+
+    <div class="note-box">
+        <h4>🔍 Nota para Novatos: ¿Qué significan los atributos?</h4>
+        <ul>
+            <li><strong>searchable:</strong> ¿Se puede buscar texto en este campo?</li>
+            <li><strong>filterable:</strong> ¿Se puede usar en filtros ($filter)?</li>
+            <li><strong>sortable:</strong> ¿Se puede ordenar por este campo?</li>
+            <li><strong>facetable:</strong> ¿Se puede usar para faceted navigation?</li>
+            <li><strong>retrievable:</strong> ¿Se devuelve en los resultados?</li>
+        </ul>
+        
+        <p><strong>Regla de oro:</strong> Solo habilita lo que <strong>necesitas.</strong> Cada atributo consume storage y afecta performance.</p>
+    </div>
+
+    <h3>Query Types:</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Caso de Uso</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Simple Query</strong></td>
+                <td>Búsqueda básica con términos</td>
+                <td>Búsquedas de usuarios finales</td>
+            </tr>
+            <tr>
+                <td><strong>Full Lucene Query</strong></td>
+                <td>Sintaxis avanzada con operadores</td>
+                <td>Búsquedas complejas y filtros</td>
+            </tr>
+            <tr>
+                <td><strong>Semantic Search</strong></td>
+                <td>Comprensión semántica con IA</td>
+                <td>Búsquedas en lenguaje natural</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="checklist">
+        <h4>✅ CHECKLIST DE DOMINIO 4</h4>
+        
+        <p><strong>📝 Conocimientos de Examen (Obligatorios para AI-102):</strong></p>
+        <ul>
+            <li><input type="checkbox" id="d1-1"><label for="d1-1">Entiendo la arquitectura: Data Source → Indexer → Skillset → Index → Search API</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-2">Conozco la diferencia entre built-in y custom skills</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-3">Puedo configurar field attributes apropiados en index schema</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-4">Sé cuándo usar cada tipo de data source</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-5">Entiendo change detection policies para incremental indexing</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-6">Conozco las limitaciones y timeouts de custom skills</label></li>
+        </ul>
+    </div>
+
+    <h1 id="dominio-5">DOMINIO 5: IMPLEMENTAR SOLUCIONES DE IA CONVERSACIONAL</h1>
+    <div class="note-box">
+        <p><strong>Peso del examen:</strong> 15-20% | <strong>Objetivo:</strong> Dominar Azure Bot Framework y Bot Framework Composer para crear chatbots inteligentes que integren múltiples servicios de Azure AI.</p>
+    </div>
+
+    <h2>MÓDULO 5.1: AZURE BOT FRAMEWORK - FUNDAMENTOS</h2>
+
+    <h3>Componentes Clave del Bot Framework:</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Componente</th>
+                <th>Función</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Bot Service</strong></td>
+                <td>Hosting</td>
+                <td>Hosting y management en Azure</td>
+            </tr>
+            <tr>
+                <td><strong>Bot Framework SDK</strong></td>
+                <td>Desarrollo</td>
+                <td>Librerías para .NET, Node.js, Python, Java</td>
+            </tr>
+            <tr>
+                <td><strong>Bot Framework Emulator</strong></td>
+                <td>Testing</td>
+                <td>Herramienta de testing local</td>
+            </tr>
+            <tr>
+                <td><strong>Bot Framework Composer</strong></td>
+                <td>Visual Builder</td>
+                <td>Creación visual de bots</td>
+            </tr>
+            <tr>
+                <td><strong>Channels</strong></td>
+                <td>Conectores</td>
+                <td>Teams, Slack, Web Chat, etc.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note-box">
+        <h4>🔍 Nota para Novatos: ¿Qué es un Bot Conversacional?</h4>
+        
+        <p><strong>Diferencia clave:</strong></p>
+        <ul>
+            <li><strong>Chatbot simple:</strong> Respuestas predefinidas, reglas fijas</li>
+            <li><strong>Bot conversacional:</strong> Entiende contexto, mantiene estado, usa IA</li>
+        </ul>
+        
+        <p><strong>Analogía simple:</strong> Un chatbot es como un menú de restaurante automatizado. Un bot conversacional es como un mesero experto que recuerda tus preferencias y puede improvisar.</p>
+        
+        <p><strong>Conceptos básicos:</strong></p>
+        <ul>
+            <li><strong>Turn:</strong> Una interacción completa (usuario envía mensaje, bot responde)</li>
+            <li><strong>Activity:</strong> Cualquier comunicación entre usuario y bot</li>
+            <li><strong>Context:</strong> Información que el bot recuerda sobre la conversación</li>
+            <li><strong>State:</strong> Datos persistentes del usuario y conversación</li>
+        </ul>
+    </div>
+
+    <h3>Bot Architecture Patterns</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nivel</th>
+                <th>Tipo</th>
+                <th>Características</th>
+                <th>Ideal para</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Level 1</strong></td>
+                <td>Echo/FAQ Bot</td>
+                <td>Respuestas simples, sin estado persistente</td>
+                <td>FAQs, información básica</td>
+            </tr>
+            <tr>
+                <td><strong>Level 2</strong></td>
+                <td>LUIS-Enabled Bot</td>
+                <td>Entiende intenciones, extrae entidades</td>
+                <td>Reservas, pedidos simples</td>
+            </tr>
+            <tr>
+                <td><strong>Level 3</strong></td>
+                <td>Multi-Turn Bot</td>
+                <td>Mantiene contexto, conversaciones complejas</td>
+                <td>Soporte técnico, ventas</td>
+            </tr>
+            <tr>
+                <td><strong>Level 4</strong></td>
+                <td>Enterprise Bot</td>
+                <td>Integra múltiples servicios, autenticación</td>
+                <td>Asistentes corporativos</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>MÓDULO 5.2: DESARROLLO DE BOTS CON SDK</h2>
+
+    <h3>Activity Types Importantes:</h3>
+    <ul>
+        <li><strong>Message:</strong> Texto del usuario</li>
+        <li><strong>ConversationUpdate:</strong> Usuario se une/sale</li>
+        <li><strong>ContactRelationUpdate:</strong> Usuario agrega/remueve bot</li>
+        <li><strong>Typing:</strong> Usuario está escribiendo</li>
+        <li><strong>DeleteUserData:</strong> Solicitud de eliminar datos</li>
+    </ul>
+
+    <div class="note-box">
+        <h4>🔍 Nota para Novatos: ¿Qué es un Activity Handler?</h4>
+        <p><strong>Activity Handler</strong> es como un "despachador de eventos":</p>
+        <ul>
+            <li>Recibe diferentes tipos de actividades</li>
+            <li>Decide qué método ejecutar</li>
+            <li>Mantiene el flujo de conversación</li>
+        </ul>
+        
+        <p><strong>Analogía:</strong> Es como un recepcionista que dirige visitantes al departamento correcto según su necesidad.</p>
+    </div>
+
+    <h2>MÓDULO 5.3: DIALOGS Y CONVERSATION FLOW</h2>
+
+    <h3>Tipos de Dialogs:</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Función</th>
+                <th>Caso de Uso</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>ComponentDialog</strong></td>
+                <td>Dialog base reutilizable</td>
+                <td>Componentes modulares</td>
+            </tr>
+            <tr>
+                <td><strong>WaterfallDialog</strong></td>
+                <td>Secuencia de pasos</td>
+                <td>Flujos lineales</td>
+            </tr>
+            <tr>
+                <td><strong>PromptDialog</strong></td>
+                <td>Solicita input específico</td>
+                <td>Recolección de datos</td>
+            </tr>
+            <tr>
+                <td><strong>ChoicePrompt</strong></td>
+                <td>Opciones múltiples</td>
+                <td>Menús de selección</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note-box">
+        <h4>🔍 Nota para Novatos: ¿Cómo funcionan los Waterfall Dialogs?</h4>
+        <p><strong>Waterfall Dialog</strong> es como una cascada de preguntas:</p>
+        <ol>
+            <li>Pregunta 1 → Respuesta → Guarda respuesta</li>
+            <li>Pregunta 2 → Respuesta → Guarda respuesta</li>
+            <li>Pregunta 3 → Respuesta → Procesa todo</li>
+        </ol>
+        
+        <p><strong>Analogía:</strong> Es como llenar un formulario paso a paso, donde cada pregunta depende de la anterior.</p>
+        
+        <p><strong>Ventajas:</strong></p>
+        <ul>
+            <li>Conversación estructurada</li>
+            <li>Validación en cada paso</li>
+            <li>Puede saltar pasos si ya tiene información</li>
+            <li>Fácil de mantener y modificar</li>
+        </ul>
+    </div>
+
+    <h2>MÓDULO 5.4: CHANNELS Y DEPLOYMENT</h2>
+
+    <h3>Channels Soportados:</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Categoría</th>
+                <th>Channels</th>
+                <th>Características</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Microsoft Channels</strong></td>
+                <td>Teams, Skype, Cortana, Office 365 Email</td>
+                <td>Integración nativa con ecosistema Microsoft</td>
+            </tr>
+            <tr>
+                <td><strong>Third-Party Channels</strong></td>
+                <td>Slack, Facebook Messenger, Telegram, Twilio SMS</td>
+                <td>Alcance amplio de usuarios</td>
+            </tr>
+            <tr>
+                <td><strong>Web Channels</strong></td>
+                <td>Web Chat, Direct Line Speech</td>
+                <td>Integración en sitios web y aplicaciones</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note-box">
+        <h4>🔍 Nota para Novatos: ¿Qué es Direct Line?</h4>
+        <p><strong>Direct Line</strong> es como un "traductor universal" para tu bot:</p>
+        <ul>
+            <li>Tu aplicación web/móvil habla con Direct Line</li>
+            <li>Direct Line habla con tu bot</li>
+            <li>Tu bot responde a través de Direct Line</li>
+            <li>Direct Line traduce la respuesta para tu aplicación</li>
+        </ul>
+        
+        <p><strong>Beneficios:</strong></p>
+        <ul>
+            <li>Una sola implementación de bot</li>
+            <li>Funciona en múltiples plataformas</li>
+            <li>Control total sobre la UI</li>
+        </ul>
+    </div>
+
+    <h2>MÓDULO 5.5: BOT FRAMEWORK COMPOSER</h2>
+
+    <div class="success-box">
+        <h4>Ventajas de Composer:</h4>
+        <ul>
+            <li>✅ <strong>No-code/Low-code:</strong> Diseño visual de conversaciones</li>
+            <li>✅ <strong>Rapid prototyping:</strong> Iteración rápida</li>
+            <li>✅ <strong>Integration:</strong> Conecta fácilmente con Azure services</li>
+            <li>✅ <strong>Testing:</strong> Emulator integrado</li>
+            <li>✅ <strong>Deployment:</strong> Deploy directo a Azure</li>
+        </ul>
+    </div>
+
+    <div class="note-box">
+        <h4>🔍 Nota para Novatos: ¿Cuándo usar Composer vs SDK?</h4>
+        
+        <p><strong>Usa Composer cuando:</strong></p>
+        <ul>
+            <li>Prototipado rápido</li>
+            <li>Equipos no técnicos</li>
+            <li>Conversaciones simples a medianas</li>
+            <li>Integración básica con servicios</li>
+        </ul>
+        
+        <p><strong>Usa SDK cuando:</strong></p>
+        <ul>
+            <li>Lógica de negocio compleja</li>
+            <li>Integración profunda con sistemas</li>
+            <li>Control total sobre el código</li>
+            <li>Performance crítica</li>
+        </ul>
+    </div>
+
+    <div class="checklist">
+        <h4>✅ CHECKLIST DE DOMINIO 5</h4>
+        
+        <p><strong>📝 Conocimientos de Examen (Obligatorios para AI-102):</strong></p>
+        <ul>
+            <li><input type="checkbox" id="d1-1"><label for="d1-1">Entiendo la diferencia entre Activity Handler y Dialog patterns</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-2">Conozco los tipos de State: User, Conversation, Private Conversation</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-3">Puedo implementar WaterfallDialogs con prompts</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-4">Sé integrar bots con LUIS y QnA Maker</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-5">Entiendo multi-channel deployment y sus diferencias</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-6">Conozco cuándo usar Composer vs SDK</label></li>
+        </ul>
+        
+        <p><strong>🌍 Habilidades del Mundo Real (Valor Agregado):</strong></p>
+        <ul>
+            <li><input type="checkbox" id="d1-1"><label for="d1-7"></label>Puedo implementar authentication con OAuth</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-8"></label>Sé configurar human handoff patterns</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-9"></label>Implemento error handling y graceful degradation</label></li>
+            <li><input type="checkbox" id="d1-1"><label for="d1-10"></label>Configuro monitoring y analytics para bots en producción</label></li>
+        </ul>
+    </div>
+        
+    <h1 id="simulacros-examen">SIMULACROS DE EXAMEN</h1>
+
+    <h2 id="simulacro-1">SIMULACRO 1: FUNDAMENTOS</h2>
+    <div class="note-box">
+        <p><strong>Instrucciones:</strong> Este simulacro contiene preguntas interactivas que reflejan la distribución real del examen AI-102. Haz clic en tu respuesta para ver si es correcta y obtener una explicación detallada.</p>
+        
+        <p><strong>Distribución por Dominios:</strong></p>
+        <ul>
+            <li><strong>Dominio 1 (Planificación):</strong> 8 preguntas (16%)</li>
+            <li><strong>Dominio 2 (Visión):</strong> 12 preguntas (24%)</li>
+            <li><strong>Dominio 3 (NLP):</strong> 16 preguntas (32%)</li>
+            <li><strong>Dominio 4 (Knowledge Mining):</strong> 6 preguntas (12%)</li>
+            <li><strong>Dominio 5 (Bots):</strong> 8 preguntas (16%)</li>
+        </ul>
+    </div>
+    
+    <div class="quiz-progress">
+        <h4>🦏 Progreso del Quiz Rhino</h4>
+        <div class="progress-bar">
+            <div class="progress-fill" id="quizProgress"></div>
+        </div>
+        <p id="progressText">Preguntas respondidas: <span id="answered">0</span> de <span id="total">5</span></p>
+        <p id="scoreText">Puntuación: <span id="correct">0</span> correctas (<span id="percentage">0</span>%)</p>
+
+        <div class="rhino-tip" style="margin-top: 15px;">
+            <p><strong>Cómo usar el quiz:</strong></p>
+            <ul style="margin: 5px 0; padding-left: 20px;">
+                <li>Haz clic en la opción que consideres correcta</li>
+                <li>Verás inmediatamente si es correcta o incorrecta</li>
+                <li>Lee la explicación detallada para entender el razonamiento</li>
+                <li>Tu progreso se guarda automáticamente</li>
+            </ul>
+            <p><em>🦏 "Avanza con determinación, cada respuesta te acerca al éxito"</em></p>
+        </div>
+    </div>
+
+    <h3>DOMINIO 1: PLANIFICACIÓN Y GESTIÓN (Preguntas 1-8)</h3>
+
+    <div class="question" data-question="1" data-correct="C">
+        <div class="question-number">Pregunta 1</div>
+        <p>Una startup de e-commerce procesa 100,000 reviews de productos diariamente en múltiples idiomas. Necesitan análisis de sentimientos en tiempo real con presupuesto limitado. ¿Cuál es la solución más cost-effective?</p>
+        
+        <div class="options">
+            <ol type="A">
+                <li data-option="A">Azure OpenAI Service con GPT-4</li>
+                <li data-option="B">Custom Machine Learning model en Azure ML</li>
+                <li data-option="C">Azure AI Language Service con Standard tier</li>
+                <li data-option="D">Multiple Cognitive Services con Free tier</li>
+            </ol>
+        </div>
+        
+        <div class="question-feedback">
+            <div class="feedback-content">
+                <h4>Explicación Detallada:</h4>
+                <p><strong>🔍 Análisis Arquitectónico:</strong> Esta pregunta evalúa tu capacidad para hacer trade-offs cost-performance apropiados.</p>
+                
+                <p><strong>Cálculo de Volumen:</strong></p>
+                <ul>
+                    <li>100K reviews/día × 30 días = 3M transacciones/mes</li>
+                    <li>Standard tier: $2 por 1K transacciones = $6,000/mes</li>
+                    <li>Commitment tier S1: $250 base + $2/1K adicional = $4,250/mes (mejor opción real)</li>
+                </ul>
+                
+                <p><strong>Por qué C es correcta:</strong></p>
+                <ul>
+                    <li><strong>Cost-effective:</strong> Precio razonable para el volumen</li>
+                    <li><strong>Multiidioma nativo:</strong> No requiere traducción previa</li>
+                    <li><strong>Tiempo real:</strong> Latencia < 1 segundo</li>
+                    <li><strong>Escalabilidad:</strong> Maneja picos de tráfico</li>
+                </ul>
+                
+                <p><strong>Por qué las otras fallan:</strong></p>
+                <ul>
+                    <li><strong>A) Azure OpenAI:</strong> $0.002/1K tokens × estimado 50 tokens/review = $300/mes en tokens, pero el costo real incluye infrastructure overhead (~$15K/mes total)</li>
+                    <li><strong>B) Custom ML:</strong> Requiere 3-6 meses desarrollo + $10K/mes infrastructure + expertise ML</li>
+                    <li><strong>D) Free tier:</strong> 5K transacciones/mes vs 3M necesarias = 99.8% de requests fallarían</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="question" data-question="2" data-correct="B">
+        <div class="question-number">Pregunta 2</div>
+        <p>Su empresa requiere análisis de imágenes médicas para detectar fracturas en rayos X. ¿Qué consideraciones de compliance son críticas?</p>
+        
+        <div class="options">
+            <ol type="A">
+                <li data-option="A">Solo usar Computer Vision API estándar</li>
+                <li data-option="B">Implementar private endpoints y HIPAA compliance</li>
+                <li data-option="C">Usar Free tier para reducir costos</li>
+                <li data-option="D">Almacenar todas las imágenes en Blob Storage público</li>
+            </ol>
+        </div>
+        
+        <div class="question-feedback">
+            <div class="feedback-content">
+                <h4>Explicación Detallada:</h4>
+                <p><strong>🔍 Análisis de Compliance:</strong> Esta pregunta evalúa tu entendimiento de regulatory requirements en healthcare.</p>
+                
+                <p><strong>Elementos críticos para HIPAA:</strong></p>
+                <ul>
+                    <li><strong>Private endpoints:</strong> Tráfico nunca sale de tu red privada</li>
+                    <li><strong>Encryption at rest:</strong> Customer-managed keys recomendadas</li>
+                    <li><strong>Audit logging:</strong> Cada acceso debe ser traceable</li>
+                    <li><strong>Access controls:</strong> Role-based access con MFA</li>
+                    <li><strong>Business Associate Agreement (BAA):</strong> Microsoft debe firmar BAA para HIPAA</li>
+                </ul>
+                
+                <p><strong>Por qué las otras fallan:</strong></p>
+                <ul>
+                    <li><strong>A) Computer Vision estándar:</strong> No está entrenado para diagnósticos médicos específicos</li>
+                    <li><strong>C) Free tier:</strong> Inadecuado para datos de producción sensibles</li>
+                    <li><strong>D) Blob público:</strong> Violación masiva de HIPAA y privacidad</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="question" data-question="3" data-correct="B">
+        <div class="question-number">Pregunta 3</div>
+        <p>Está diseñando una solución de IA para una empresa financiera. ¿Cuál es la mejor práctica para authentication?</p>
+        
+        <div class="options">
+            <ol type="A">
+                <li data-option="A">Usar API keys compartidas entre aplicaciones</li>
+                <li data-option="B">Implementar Managed Identity con Azure AD</li>
+                <li data-option="C">Hardcodear credentials en el código</li>
+                <li data-option="D">Usar connection strings en archivos de configuración</li>
+            </ol>
+        </div>
+        
+        <div class="question-feedback">
+            <div class="feedback-content">
+                <h4>Explicación Detallada:</h4>
+                <p><strong>🔍 Análisis de Seguridad Empresarial:</strong> Microsoft evalúa tu conocimiento de security best practices para sectores regulados.</p>
+                
+                <p><strong>Ventajas de Managed Identity:</strong></p>
+                <ul>
+                    <li><strong>Zero secrets in code:</strong> Elimina riesgo de credential exposure</li>
+                    <li><strong>Automatic rotation:</strong> Azure maneja lifecycle de credentials</li>
+                    <li><strong>Audit trail:</strong> Integración completa con Azure AD logs</li>
+                    <li><strong>Conditional access:</strong> Puede aplicar políticas de acceso</li>
+                    <li><strong>MFA integration:</strong> Hereda políticas de MFA corporativas</li>
+                </ul>
+                
+                <p><strong>🦏 Rhino Tip:</strong> Para empresas financieras, Managed Identity + Azure AD es siempre la respuesta correcta sobre API keys. ¡Seguridad con la fuerza de un rinoceronte!</p>
+            </div>
+        </div>
+    </div>
+
+    <h3>DOMINIO 2: VISIÓN ARTIFICIAL (Preguntas 9-20)</h3>
+
+    <div class="question" data-question="9" data-correct="B">
+        <div class="question-number">Pregunta 9</div>
+        <p>Necesita extraer texto de facturas escaneadas con layouts complejos. ¿Qué servicio es más apropiado?</p>
+        
+        <div class="options">
+            <ol type="A">
+                <li data-option="A">Computer Vision OCR</li>
+                <li data-option="B">Form Recognizer con custom model</li>
+                <li data-option="C">Custom Vision con classification</li>
+                <li data-option="D">Azure OpenAI con vision capabilities</li>
+            </ol>
+        </div>
+        
+        <div class="question-feedback">
+            <div class="feedback-content">
+                <h4>Explicación Detallada:</h4>
+                <p><strong>🔍 Análisis de Document Processing:</strong> Esta pregunta evalúa tu conocimiento de servicios especializados para documentos estructurados.</p>
+                
+                <p><strong>Por qué B es correcta:</strong></p>
+                <ul>
+                    <li><strong>Layout understanding:</strong> Form Recognizer entiende la estructura de documentos</li>
+                    <li><strong>Key-value extraction:</strong> Extrae pares clave-valor automáticamente</li>
+                    <li><strong>Custom training:</strong> Se puede entrenar con tus formatos específicos</li>
+                    <li><strong>Table extraction:</strong> Maneja tablas complejas en facturas</li>
+                </ul>
+                
+                <p><strong>Por qué las otras fallan:</strong></p>
+                <ul>
+                    <li><strong>A) Computer Vision OCR:</strong> Solo extrae texto, no entiende estructura</li>
+                    <li><strong>C) Custom Vision:</strong> Para clasificación de imágenes, no extracción de texto</li>
+                    <li><strong>D) Azure OpenAI:</strong> Costoso y no optimizado para documentos estructurados</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h3>DOMINIO 3: PROCESAMIENTO DE LENGUAJE NATURAL (Preguntas 21-36)</h3>
+
+    <div class="question" data-question="21" data-correct="B">
+        <div class="question-number">Pregunta 21</div>
+        <p>¿Cuál es la principal diferencia entre LUIS y Azure AI Language Service?</p>
+        
+        <div class="options">
+            <ol type="A">
+                <li data-option="A">LUIS es más nuevo que Language Service</li>
+                <li data-option="B">Language Service incluye LUIS functionality plus additional capabilities</li>
+                <li data-option="C">Son servicios completamente diferentes sin relación</li>
+                <li data-option="D">LUIS solo funciona en inglés</li>
+            </ol>
+        </div>
+        
+        <div class="question-feedback">
+            <div class="feedback-content">
+                <h4>Explicación Detallada:</h4>
+                <p><strong>🔍 Análisis de Evolución de Servicios:</strong> Esta pregunta evalúa tu conocimiento de la migración de servicios de Microsoft.</p>
+                
+                <p><strong>Por qué B es correcta:</strong></p>
+                <ul>
+                    <li><strong>Unified service:</strong> Language Service consolida múltiples capacidades</li>
+                    <li><strong>LUIS migration:</strong> LUIS se está migrando a Conversational Language Understanding (CLU)</li>
+                    <li><strong>Additional features:</strong> Incluye Text Analytics, Question Answering, etc.</li>
+                    <li><strong>Better orchestration:</strong> Puede combinar múltiples modelos en un workflow</li>
+                </ul>
+                
+                <p><strong>Capacidades adicionales en Language Service:</strong></p>
+                <ul>
+                    <li>Sentiment Analysis con Opinion Mining</li>
+                    <li>Named Entity Recognition (NER)</li>
+                    <li>PII Detection y Redaction</li>
+                    <li>Question Answering (ex-QnA Maker)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h3 id="explicaciones-detalladas">RESUMEN DEL QUIZ</h3>
+    
+    <div class="quiz-summary" id="quizSummary" style="display: none;">
+        <div class="success-box">
+            <h4>🎉 ¡Quiz Completado!</h4>
+            <p id="finalScore"></p>
+            <p id="recommendation"></p>
+            <div class="text-center" style="margin-top: 20px;">
+                <button onclick="resetQuiz()" class="back-to-top" style="background: #28a745; cursor: pointer; border: none;">
+                    🔄 Reiniciar Quiz
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="tip-box">
+        <h4>🎯 SCORING GUIDE</h4>
+        <ul>
+            <li><strong>45-50 correctas (90-100%):</strong> Excelente preparación, listo para el examen</li>
+            <li><strong>40-44 correctas (80-89%):</strong> Buena preparación, revisar áreas débiles</li>
+            <li><strong>35-39 correctas (70-79%):</strong> Preparación moderada, necesita más estudio</li>
+            <li><strong>Menos de 35 (< 70%):</strong> Necesita estudio significativo adicional</li>
+        </ul>
+    </div>
+
+    <h1 id="checklist-preparacion">CHECKLIST DE PREPARACIÓN</h1>
+
+    <h2>📅 CRONOGRAMA FINAL DE ESTUDIO</h2>
+
+    <div class="success-box">
+        <h4>Semana 1-2: Dominios Críticos (65% del examen)</h4>
+        <p><strong>Dominio 1:</strong> Planificación y gestión de Azure AI</p>
+        <ul>
+            <li>Selección de servicios y justificación arquitectónica</li>
+            <li>Modelos de pricing y optimización de costos</li>
+            <li>Métodos de deployment (Portal, CLI, ARM)</li>
+            <li>Seguridad: Managed Identity, private endpoints, Responsible AI</li>
+        </ul>
+        
+        <p><strong>Dominio 3:</strong> Procesamiento de lenguaje natural</p>
+        <ul>
+            <li>Migración LUIS → Language Service (CLU)</li>
+            <li>Text Analytics: sentiment, NER, PII detection</li>
+            <li>Migración QnA Maker → Question Answering</li>
+            <li>Azure OpenAI: modelos, prompt engineering, content filtering</li>
+        </ul>
+    </div>
+
+    <div class="tip-box">
+        <h4>Semana 3: Dominios Técnicos (40% del examen)</h4>
+        <p><strong>Dominio 2:</strong> Visión artificial</p>
+        <ul>
+            <li>Computer Vision API: Analyze, OCR, Read</li>
+            <li>Custom Vision: Classification vs Object Detection</li>
+            <li>Face API: limitaciones y compliance</li>
+        </ul>
+        
+        <p><strong>Dominio 5:</strong> IA conversacional</p>
+        <ul>
+            <li>Bot Framework: Activities, Dialogs, State</li>
+            <li>Multi-channel deployment</li>
+            <li>Integration con LUIS y QnA Maker</li>
+        </ul>
+    </div>
+
+    <div class="note-box">
+        <h4>Semana 4: Dominio Especializado + Repaso (15% del examen)</h4>
+        <p><strong>Dominio 4:</strong> Minería de conocimiento</p>
+        <ul>
+            <li>Cognitive Search: indexers, skillsets, indexes</li>
+            <li>Built-in vs custom skills</li>
+            <li>Query types y optimization</li>
+        </ul>
+        
+        <p><strong>Repaso general:</strong> Revisión de todos los dominios</p>
+        <ul>
+            <li>Fórmula de 6 pasos para respuestas</li>
+            <li>Patrones arquitectónicos comunes</li>
+            <li>Troubleshooting y best practices</li>
+        </ul>
+    </div>
+
+    <div class="warning-box">
+        <h4>Semana 5: Práctica Intensiva</h4>
+        <ul>
+            <li><strong>Simulacro 1:</strong> Fundamentos (objetivo: 80%+)</li>
+            <li><strong>Simulacro 2:</strong> Arquitectura avanzada (objetivo: 85%+)</li>
+            <li><strong>Simulacro 3:</strong> Casos edge (objetivo: 90%+)</li>
+            <li><strong>Revisión de errores:</strong> Análisis detallado de respuestas incorrectas</li>
+            <li><strong>Memorización final:</strong> Tips específicos y fórmulas</li>
+        </ul>
+    </div>
+
+    <h1 id="recursos-finales">🦏 DE MI PARA TU</h1>
+
+    <div class="success-box">
+        <h4>🦏 ¡Felicitaciones, futuro Rhino certificado!</h4>
+        
+        <p><strong>Has completado el entrenamiento Rhino y cubierto:</strong></p>
+        <ul>
+            <li>✅ <strong>5 dominios completos</strong> con enfoque dual (novatos + expertos)</li>
+            <li>✅ <strong>150+ conceptos clave</strong> explicados con analogías y ejemplos</li>
+            <li>✅ <strong>3 simulacros progresivos</strong> con 150 preguntas totales</li>
+            <li>✅ <strong>100+ Rhino Tips específicos</strong> del examen AI-102</li>
+            <li>✅ <strong>Proyectos hands-on</strong> para cada dominio</li>
+            <li>✅ <strong>Estrategias de estudio</strong> probadas y efectivas</li>
+        </ul>
+        
+        <p class="text-center font-bold" style="font-size: 1.1em; color: #28a745;">
+            🦏 ¡Que la fuerza del RHINOceronte te acompañe en tu certificación!
+        </p>
+    </div>
+
+    <h2>📚 RECURSOS ADICIONALES</h2>
+
+    <div class="note-box">
+        <h4>Documentación Oficial de Microsoft</h4>
+        <ul>
+            <li><a href="https://docs.microsoft.com/azure/cognitive-services/">Azure AI Services Documentation</a></li>
+            <li><a href="https://docs.microsoft.com/azure/cognitive-services/openai/">Azure OpenAI Service Documentation</a></li>
+            <li><a href="https://docs.microsoft.com/azure/bot-service/">Azure Bot Framework Documentation</a></li>
+            <li><a href="https://docs.microsoft.com/azure/search/">Azure Cognitive Search Documentation</a></li>
+        </ul>
+        
+        <h4>Learning Paths Oficiales</h4>
+        <ul>
+            <li><a href="https://docs.microsoft.com/learn/certifications/azure-ai-engineer/">AI-102 Learning Path</a></li>
+            <li><a href="https://docs.microsoft.com/learn/paths/get-started-with-artificial-intelligence-on-azure/">Azure AI Fundamentals</a></li>
+            <li><a href="https://docs.microsoft.com/learn/modules/responsible-ai-principles/">Responsible AI Principles</a></li>
+        </ul>
+        
+        <h4>Herramientas de Práctica</h4>
+        <ul>
+            <li><a href="https://ai.azure.com/">Azure AI Studio</a></li>
+            <li><a href="https://language.cognitive.azure.com/">Language Studio</a></li>
+            <li><a href="https://portal.vision.cognitive.azure.com/">Vision Studio</a></li>
+            <li><a href="https://github.com/Microsoft/BotFramework-Emulator">Bot Framework Emulator</a></li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <p><strong>🦏 © 2025 - Guía Completa AI-102 Azure AI Engineer Associate - Rhino Edition</strong></p>
+        <p>Esta guía ha sido creada con la fuerza y determinación de un rinoceronte para ayudarte a aprobar el examen AI-102 y convertirte en un Azure AI Engineer certificado. 
+            <br>Realizada con 💙 por el <strong>🦏 RhinoBebé</strong>, Kiro y ChatGPT. ¡Los tqm mucha suerte! <3</p>
+    </div>
+
+    <!-- Botón flotante para volver arriba -->
+    <a href="#introduccion-metodologia" class="floating-back-to-top" id="backToTop" title="Volver al inicio">
+        ⬆️
+    </a>
+
+    <script>
+        // Variables globales para el quiz
+        let quizData = {
+            totalQuestions: 5,
+            answeredQuestions: 0,
+            correctAnswers: 0,
+            userAnswers: {}
+        };
+
+        // Mostrar/ocultar botón flotante según scroll
+        window.addEventListener('scroll', function() {
+            const backToTopButton = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        // Smooth scroll para todos los enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Funcionalidad de checklist interactivo
+        document.addEventListener('DOMContentLoaded', function() {
+            // Manejar checkboxes de checklist
+            document.querySelectorAll('.checklist input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const li = this.closest('li');
+                    if (this.checked) {
+                        li.classList.add('completed');
+                    } else {
+                        li.classList.remove('completed');
+                    }
+                    
+                    // Guardar estado en localStorage
+                    localStorage.setItem(this.id, this.checked);
+                });
+                
+                // Restaurar estado desde localStorage
+                const saved = localStorage.getItem(checkbox.id);
+                if (saved === 'true') {
+                    checkbox.checked = true;
+                    checkbox.closest('li').classList.add('completed');
+                }
+            });
+
+            // Inicializar quiz interactivo
+            initializeQuiz();
+        });
+
+        function initializeQuiz() {
+            // Manejar clics en opciones del quiz
+            document.querySelectorAll('.question .options li').forEach(option => {
+                option.addEventListener('click', function() {
+                    const question = this.closest('.question');
+                    const questionNum = question.dataset.question;
+                    const selectedOption = this.dataset.option;
+                    const correctOption = question.dataset.correct;
+                    
+                    // Evitar múltiples respuestas
+                    if (question.classList.contains('answered')) {
+                        return;
+                    }
+                    
+                    // Marcar pregunta como respondida
+                    question.classList.add('answered');
+                    
+                    // Deshabilitar todas las opciones
+                    question.querySelectorAll('.options li').forEach(opt => {
+                        opt.classList.add('disabled');
+                    });
+                    
+                    // Marcar respuesta seleccionada
+                    this.classList.add('selected');
+                    
+                    // Marcar respuesta correcta
+                    const correctElement = question.querySelector(`[data-option="${correctOption}"]`);
+                    correctElement.classList.add('correct');
+                    
+                    // Si la respuesta es incorrecta, marcarla
+                    if (selectedOption !== correctOption) {
+                        this.classList.add('incorrect');
+                    }
+                    
+                    // Mostrar explicación con indicador visual
+                    const feedback = question.querySelector('.question-feedback');
+                    const feedbackContent = feedback.querySelector('.feedback-content');
+                    
+                    // Agregar indicador de resultado
+                    const resultIndicator = document.createElement('div');
+                    resultIndicator.style.cssText = 'font-size: 1.2em; font-weight: bold; margin-bottom: 10px;';
+                    
+                    if (selectedOption === correctOption) {
+                        resultIndicator.innerHTML = '✅ <span style="color: #28a745;">¡Correcto!</span>';
+                        feedback.classList.add('correct');
+                    } else {
+                        resultIndicator.innerHTML = `❌ <span style="color: #dc3545;">Incorrecto.</span> La respuesta correcta es <strong>${correctOption}</strong>`;
+                        feedback.classList.add('incorrect');
+                    }
+                    
+                    feedbackContent.insertBefore(resultIndicator, feedbackContent.firstChild);
+                    feedback.style.display = 'block';
+                    
+                    // Actualizar estadísticas
+                    updateQuizStats(questionNum, selectedOption === correctOption);
+                });
+            });
+        }
+
+        function updateQuizStats(questionNum, isCorrect) {
+            quizData.answeredQuestions++;
+            if (isCorrect) {
+                quizData.correctAnswers++;
+            }
+            
+            // Actualizar UI
+            document.getElementById('answered').textContent = quizData.answeredQuestions;
+            document.getElementById('correct').textContent = quizData.correctAnswers;
+            
+            const percentage = Math.round((quizData.correctAnswers / quizData.answeredQuestions) * 100);
+            document.getElementById('percentage').textContent = percentage;
+            
+            // Actualizar barra de progreso
+            const progressPercentage = (quizData.answeredQuestions / quizData.totalQuestions) * 100;
+            document.getElementById('quizProgress').style.width = progressPercentage + '%';
+            
+            // Si se completó el quiz, mostrar resumen
+            if (quizData.answeredQuestions === quizData.totalQuestions) {
+                showQuizSummary();
+            }
+        }
+
+        function showQuizSummary() {
+            const summary = document.getElementById('quizSummary');
+            const finalScore = document.getElementById('finalScore');
+            const recommendation = document.getElementById('recommendation');
+            
+            const percentage = Math.round((quizData.correctAnswers / quizData.totalQuestions) * 100);
+            
+            finalScore.textContent = `Puntuación final: ${quizData.correctAnswers}/${quizData.totalQuestions} (${percentage}%)`;
+            
+            let recommendationText = '';
+            if (percentage >= 90) {
+                recommendationText = '🎉 ¡Excelente! Estás muy bien preparado para el examen AI-102.';
+            } else if (percentage >= 70) {
+                recommendationText = '👍 Buen trabajo. Revisa las explicaciones de las preguntas incorrectas.';
+            } else if (percentage >= 50) {
+                recommendationText = '📚 Necesitas más estudio. Revisa los dominios donde fallaste.';
+            } else {
+                recommendationText = '⚠️ Requieres estudio adicional significativo antes del examen.';
+            }
+            
+            recommendation.textContent = recommendationText;
+            summary.style.display = 'block';
+            
+            // Scroll suave al resumen
+            summary.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetQuiz() {
+            // Reiniciar datos del quiz
+            quizData = {
+                totalQuestions: 5,
+                answeredQuestions: 0,
+                correctAnswers: 0,
+                userAnswers: {}
+            };
+            
+            // Reiniciar UI
+            document.getElementById('answered').textContent = '0';
+            document.getElementById('correct').textContent = '0';
+            document.getElementById('percentage').textContent = '0';
+            document.getElementById('quizProgress').style.width = '0%';
+            
+            // Ocultar resumen
+            document.getElementById('quizSummary').style.display = 'none';
+            
+            // Reiniciar todas las preguntas
+            document.querySelectorAll('.question').forEach(question => {
+                question.classList.remove('answered');
+                
+                // Reiniciar opciones
+                question.querySelectorAll('.options li').forEach(option => {
+                    option.classList.remove('selected', 'correct', 'incorrect', 'disabled');
+                });
+                
+                // Ocultar feedback y limpiar indicadores
+                const feedback = question.querySelector('.question-feedback');
+                feedback.style.display = 'none';
+                feedback.classList.remove('correct', 'incorrect');
+                
+                // Remover indicadores de resultado previos
+                const resultIndicator = feedback.querySelector('div[style*="font-size: 1.2em"]');
+                if (resultIndicator) {
+                    resultIndicator.remove();
+                }
+            });
+            
+            // Scroll al inicio del quiz
+            document.getElementById('simulacro-1').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+
+</html>
